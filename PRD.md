@@ -26,11 +26,11 @@ Fãs da saga Harry Potter — principalmente jovens adultos entre 15 e 30 anos �
 
 ### Jogo Diário
 - Jogar uma sessão composta por três desafios sequenciais:
-  1. **Adivinhar o personagem pelos atributos** — o jogador escolhe um personagem e recebe feedback visual sobre quais atributos coincidem com o personagem secreto
-  2. **Adivinhar o personagem pela imagem** — o jogador identifica um personagem a partir de sua foto
-  3. **Adivinhar o feitiço pela descrição** — o jogador escolhe um feitiço com base na descrição apresentada
-- Avançar para o próximo desafio somente após concluir o anterior
-- Acumular pontos ao concluir a sessão de jogos
+  1. **Adivinhar o personagem pelos atributos** — o jogador escolhe um personagem e recebe feedback visual sobre quais atributos coincidem com o personagem secreto. O desafio é concluído quando todos os atributos estiverem corretos. Não há limite de tentativas.
+  2. **Adivinhar o personagem pela imagem** — o jogador identifica um personagem a partir de uma foto inicialmente desfocada. A cada tentativa incorreta, a imagem fica progressivamente mais nítida. O jogador tem até 8 tentativas; se não acertar dentro desse limite, o desafio é encerrado automaticamente e o jogador avança mesmo assim, porém com uma penalidade no total de tentativas da sessão.
+  3. **Adivinhar o feitiço pela descrição** — o jogador vê a descrição de um feitiço e seleciona o nome correto entre as opções. Não há limite de tentativas.
+- Avançar para o próximo desafio somente após concluir o anterior — os desafios são bloqueados até que o anterior seja finalizado
+- O total de tentativas usados nos três desafios é registrado ao fim da sessão
 
 ### Desafios entre Jogadores
 - Enviar um desafio para outro jogador cadastrado
@@ -40,8 +40,8 @@ Fãs da saga Harry Potter — principalmente jovens adultos entre 15 e 30 anos �
 - Visualizar o resultado do desafio ao final
 
 ### Ranking e Histórico
-- Visualizar o ranking global de jogadores por pontuação
-- Visualizar o próprio histórico de partidas e pontos acumulados
+- Visualizar o ranking global de jogadores ordenado por pontuação total acumulada
+- Visualizar o próprio histórico com a descrição de cada movimentação de pontos (ganhos e perdas)
 - Identificar a própria posição no ranking
 
 ### Dashboard
@@ -51,27 +51,56 @@ Fãs da saga Harry Potter — principalmente jovens adultos entre 15 e 30 anos �
 
 ---
 
-## 4. Fluxos
+## 5. Regras de Pontuação e Progressão
+
+### Progressão dos desafios
+- Os três desafios de uma sessão devem ser jogados em ordem: Atributos → Imagem → Feitiço.
+- Não é possível pular ou acessar um desafio sem ter concluído o anterior.
+- No Desafio 2 (imagem), se o jogador esgotar as 8 tentativas sem acertar, o desafio é encerrado como derrota parcial e o jogador segue para o Desafio 3. Essa situação penaliza o total de tentativas da sessão.
+
+### Pontuação nos desafios livres
+- Sessões livres não geram pontos no ranking. O objetivo é praticar e registrar o histórico de partidas.
+
+### Pontuação nos desafios entre jogadores
+O vencedor de um desafio é determinado pelo menor número total de tentativas usadas na sessão inteira (somando os três desafios).
+
+| Resultado | Pontos |
+|---|---|
+| Jogador desafiado vence (usou menos tentativas que o desafiante) | +20 pontos |
+| Jogador desafiante vence (desafiado usou mais tentativas) | +10 pontos |
+| Perdedor (qualquer dos dois) | −10 pontos |
+
+- A pontuação nunca fica negativa: o mínimo é 0 pontos.
+- Cada movimentação de pontos fica registrada no histórico do jogador com uma descrição do resultado.
+
+### Ranking
+- O ranking global ordena todos os jogadores pela pontuação total acumulada em desafios.
+- Quanto mais desafios vencidos e com menos tentativas, maior a posição no ranking.
+
+---
+
+## 6. Fluxos
 
 ### Fluxo 1 — Jogar uma sessão livre
 
 1. Jogador realiza login
 2. Jogador acessa a área de jogo
-3. Jogador joga o Desafio 1: seleciona um personagem e recebe feedback sobre os atributos
+3. Jogador joga o Desafio 1: seleciona um personagem e recebe feedback sobre os atributos; repete até acertar todos
 4. Ao acertar todos os atributos, avança para o Desafio 2
-5. Jogador identifica o personagem pela imagem
-6. Ao acertar, avança para o Desafio 3
-7. Jogador lê a descrição de um feitiço e seleciona o nome correto
-8. Ao acertar, conclui a sessão e recebe os pontos
+5. Jogador tenta identificar o personagem pela imagem desfocada; a imagem fica mais nítida a cada tentativa errada
+6. Ao acertar, ou ao esgotar as 8 tentativas, avança para o Desafio 3
+7. Jogador lê a descrição de um feitiço e seleciona o nome correto; repete até acertar
+8. Ao acertar o feitiço, conclui a sessão; o total de tentativas é registrado
 9. Jogador é redirecionado para o dashboard
 
 ### Fluxo 2 — Desafiar outro jogador
 
-1. Jogador acessa o dashboard
-2. Jogador seleciona a opção de enviar desafio e escolhe o adversário
-3. O adversário recebe o desafio e pode aceitar ou recusar
-4. Se aceito, ambos jogam a mesma sessão de desafios
-5. Ao finalizar, o sistema apura o resultado e exibe o vencedor
+1. Jogador (desafiante) acessa o dashboard e envia um desafio para outro jogador
+2. O adversário (desafiado) recebe o desafio e pode aceitar ou recusar
+3. Se aceito, o desafiante joga a sessão primeiro; seu total de tentativas fica registrado
+4. O desafiado joga a mesma sessão (mesmos personagens e feitiço)
+5. Ao finalizar, o sistema compara o total de tentativas dos dois; quem usou menos tentativas vence
+6. Vencedor recebe pontos e perdedor perde pontos; ambos visualizam o resultado no histórico
 
 ### Fluxo 3 — Acompanhar o ranking
 
