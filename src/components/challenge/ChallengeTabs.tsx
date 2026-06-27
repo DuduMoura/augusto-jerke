@@ -1,10 +1,12 @@
 "use client";
 
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
+import { useGame } from "@/contexts/GameContext";
 
 interface ChallengeUser {
   id: string;
@@ -36,8 +38,15 @@ async function fetchChallenges(): Promise<ChallengesData> {
 }
 
 export function ChallengeTabs({ currentUserId }: { currentUserId: string }) {
+  const router = useRouter();
   const queryClient = useQueryClient();
+  const { setState } = useGame();
   const { data, isLoading } = useQuery({ queryKey: ["challenges"], queryFn: fetchChallenges });
+
+  function handleAccept(challengeId: string) {
+    setState((prev) => ({ ...prev, pendingChallengeId: challengeId, isFinished: false }));
+    router.push("/game/characterAttributes");
+  }
 
   const declineMutation = useMutation({
     mutationFn: async (challengeId: string) => {
@@ -93,14 +102,22 @@ export function ChallengeTabs({ currentUserId }: { currentUserId: string }) {
                 </Badge>
                 <span className="font-medium">{c.challenger_user?.username}</span>
               </div>
-              <Button
-                size="sm"
-                variant="destructive"
-                onClick={() => declineMutation.mutate(c.id)}
-                disabled={declineMutation.isPending}
-              >
-                Recusar
-              </Button>
+              <div className="flex gap-2">
+                <Button
+                  size="sm"
+                  onClick={() => handleAccept(c.id)}
+                >
+                  Aceitar
+                </Button>
+                <Button
+                  size="sm"
+                  variant="destructive"
+                  onClick={() => declineMutation.mutate(c.id)}
+                  disabled={declineMutation.isPending}
+                >
+                  Recusar
+                </Button>
+              </div>
             </div>
           ))
         )}

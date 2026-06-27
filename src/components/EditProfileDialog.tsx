@@ -13,7 +13,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
@@ -60,8 +60,8 @@ export function EditProfileDialog({ currentUsername }: { currentUsername: string
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger>
-        <Button variant="outline" size="sm">Editar Perfil</Button>
+      <DialogTrigger className={buttonVariants({ variant: "outline", size: "sm" })}>
+        Editar Perfil
       </DialogTrigger>
       <DialogContent className="max-w-sm">
         <DialogHeader>

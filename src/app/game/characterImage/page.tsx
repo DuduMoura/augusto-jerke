@@ -27,7 +27,7 @@ export default function CharacterImagePage() {
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (state.currentChallenge < 2) {
+    if (!state.isFinished && state.currentChallenge < 2) {
       router.replace("/game/characterAttributes");
       return;
     }

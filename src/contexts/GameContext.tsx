@@ -16,6 +16,7 @@ interface GameState {
   guessedCharacters1: string[];
   guessedCharacters2: string[];
   challenge2Penalty: number;
+  pendingChallengeId: string;
 }
 
 const defaultState: GameState = {
@@ -31,6 +32,7 @@ const defaultState: GameState = {
   guessedCharacters1: [],
   guessedCharacters2: [],
   challenge2Penalty: 0,
+  pendingChallengeId: "",
 };
 
 interface GameContextValue {

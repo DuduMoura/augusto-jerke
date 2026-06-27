@@ -57,15 +57,15 @@ export default function CharacterAttributesPage() {
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (!state.gameId) initGame();
+    if (!state.gameId || state.isFinished) initGame();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    if (state.currentChallenge > 1) {
+    if (!state.isFinished && state.currentChallenge > 1) {
       router.replace("/game/characterImage");
     }
-  }, [state.currentChallenge, router]);
+  }, [state.currentChallenge, state.isFinished, router]);
 
   async function initGame() {
     setStarting(true);

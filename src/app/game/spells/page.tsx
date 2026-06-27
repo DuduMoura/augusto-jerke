@@ -13,7 +13,7 @@ interface SpellOption {
 
 export default function SpellsPage() {
   const router = useRouter();
-  const { state, setState, resetGame } = useGame();
+  const { state, setState } = useGame();
   const [description, setDescription] = useState("");
   const [options, setOptions] = useState<SpellOption[]>([]);
   const [selected, setSelected] = useState<string | null>(null);
@@ -23,7 +23,7 @@ export default function SpellsPage() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (state.currentChallenge < 3) {
+    if (!state.isFinished && state.currentChallenge < 3) {
       router.replace(state.currentChallenge === 1 ? "/game/characterAttributes" : "/game/characterImage");
       return;
     }
@@ -64,11 +64,31 @@ export default function SpellsPage() {
 
     if (data.won) {
       setWon(true);
+      const total =
+        state.attemptsChallenge1 +
+        state.attemptsChallenge2 +
+        state.challenge2Penalty +
+        newAttempts;
+
       setState((prev) => ({
         ...prev,
         attemptsChallenge3: newAttempts,
         isFinished: true,
       }));
+
+      if (state.pendingChallengeId) {
+        await fetch("/api/challenge/finish", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            challengeId: state.pendingChallengeId,
+            challengerAttempts: 9999,
+            challengedAttempts: total,
+          }),
+        });
+        setState((prev) => ({ ...prev, pendingChallengeId: "" }));
+      }
+
       setShowModal(true);
     } else {
       setSelected(null);
@@ -76,7 +96,6 @@ export default function SpellsPage() {
   }
 
   function handleFinish() {
-    resetGame();
     router.push("/dashboard");
   }
 
