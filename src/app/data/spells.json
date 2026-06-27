@@ -1,0 +1,127 @@
+[
+  {
+    "id": "sp-001",
+    "name": "Expelliarmus",
+    "description": "Feitiço de Desarmamento. Faz o oponente perder o objeto que está segurando, geralmente sua varinha. É o feitiço característico de Harry Potter."
+  },
+  {
+    "id": "sp-002",
+    "name": "Avada Kedavra",
+    "description": "Uma das três Maldições Imperdoáveis. Causa morte instantânea e emite um clarão de luz verde. Não tem contra-feitiço conhecido."
+  },
+  {
+    "id": "sp-003",
+    "name": "Crucio",
+    "description": "Uma das três Maldições Imperdoáveis. Inflige dor insuportável na vítima sem causar dano físico. Exige que o lançador realmente deseje causar sofrimento."
+  },
+  {
+    "id": "sp-004",
+    "name": "Imperio",
+    "description": "Uma das três Maldições Imperdoáveis. Coloca a vítima sob controle total do lançador, fazendo-a obedecer qualquer ordem."
+  },
+  {
+    "id": "sp-005",
+    "name": "Wingardium Leviosa",
+    "description": "Feitiço de levitação. Faz um objeto se elevar no ar. O primeiro feitiço ensinado aos alunos de primeiro ano em Hogwarts."
+  },
+  {
+    "id": "sp-006",
+    "name": "Lumos",
+    "description": "Feitiço de iluminação. Cria uma luz brilhante na ponta da varinha, permitindo ver no escuro."
+  },
+  {
+    "id": "sp-007",
+    "name": "Nox",
+    "description": "Contra-feitiço de Lumos. Apaga a luz criada pelo feitiço Lumos na ponta da varinha."
+  },
+  {
+    "id": "sp-008",
+    "name": "Alohomora",
+    "description": "Feitiço de destrancamento. Abre fechaduras de portas e janelas. Pode ser bloqueado por um Cadeado Colossus."
+  },
+  {
+    "id": "sp-009",
+    "name": "Accio",
+    "description": "Feitiço de Convocação. Chama um objeto à mão do lançador, não importando a distância. Harry o usou para chamar sua Firebolt durante o Torneio Tribruxo."
+  },
+  {
+    "id": "sp-010",
+    "name": "Expecto Patronum",
+    "description": "Feitiço Patrono. Cria uma manifestação de emoções positivas na forma de um animal que protege o lançador de Dementadores e Horcruxes."
+  },
+  {
+    "id": "sp-011",
+    "name": "Riddikulus",
+    "description": "Feitiço usado contra Boggart. Transforma o medo personificado pelo Boggart em algo cômico, enfraquecendo-o. Requer que o lançador pense em algo engraçado."
+  },
+  {
+    "id": "sp-012",
+    "name": "Stupefy",
+    "description": "Feitiço Estupefante. Atordoa e imobiliza temporariamente o alvo, lançando-o para trás com um clarão de luz vermelha."
+  },
+  {
+    "id": "sp-013",
+    "name": "Protego",
+    "description": "Feitiço de Escudo. Cria um escudo mágico que deflecte feitiços e ataques físicos. A versão mais poderosa é o Protego Horribilis."
+  },
+  {
+    "id": "sp-014",
+    "name": "Finite Incantatem",
+    "description": "Encerra um feitiço ou maldição ativa. Pode neutralizar múltiplos efeitos mágicos de uma vez quando utilizado com força suficiente."
+  },
+  {
+    "id": "sp-015",
+    "name": "Obliviate",
+    "description": "Feitiço Desmemorial. Apaga ou modifica as memórias de uma pessoa. Hermione o usou nos pais para protegê-los durante a caçada aos Horcruxes."
+  },
+  {
+    "id": "sp-016",
+    "name": "Sectumsempra",
+    "description": "Feitiço criado pelo Príncipe Mestiço (Severo Snape). Causa cortes profundos e sangramento severo no alvo. Snape desenvolveu o antídoto Vulnera Sanentur."
+  },
+  {
+    "id": "sp-017",
+    "name": "Legilimens",
+    "description": "Permite ao lançador penetrar na mente de outra pessoa e acessar suas memórias e pensamentos. Voldemort e Snape eram mestres desta arte."
+  },
+  {
+    "id": "sp-018",
+    "name": "Occlumens",
+    "description": "Arte de fechar a mente contra Legilimência. Protege o praticante de ter seus pensamentos e memórias lidos por outro bruxo. Harry tentou aprender com Snape."
+  },
+  {
+    "id": "sp-019",
+    "name": "Petrificus Totalus",
+    "description": "Feitiço Petrificante Total. Paralisa completamente o corpo do alvo deixando-o rígido como uma estátua, mas ainda consciente."
+  },
+  {
+    "id": "sp-020",
+    "name": "Reparo",
+    "description": "Feitiço de Reparo. Conserta objetos quebrados ou danificados. Hermione o usou frequentemente para consertar os óculos de Harry e outros objetos."
+  },
+  {
+    "id": "sp-021",
+    "name": "Engorgio",
+    "description": "Feitiço de Engrandecimento. Aumenta o tamanho de um objeto ou ser vivo. O contra-feitiço é o Reducio."
+  },
+  {
+    "id": "sp-022",
+    "name": "Reducio",
+    "description": "Feitiço de Redução. Diminui o tamanho de um objeto ou ser. É o contra-feitiço do Engorgio."
+  },
+  {
+    "id": "sp-023",
+    "name": "Incendio",
+    "description": "Feitiço de Fogo. Conjura fogo ou faz objetos se inflamarem. Pode ser usado tanto para iluminação quanto como arma."
+  },
+  {
+    "id": "sp-024",
+    "name": "Aguamenti",
+    "description": "Conjura um jato de água limpa da ponta da varinha. Pode ser usado para apagar incêndios ou como fonte de água potável."
+  },
+  {
+    "id": "sp-025",
+    "name": "Apparate",
+    "description": "Habilidade avançada de teletransporte mágico. O bruxo desaparece de um lugar e reaparece em outro instantaneamente. Requer licença do Ministério da Magia."
+  }
+]
