@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id       String  @id @default(uuid())
+  username String  @unique
+  email    String  @unique
+  password String
+  house    String
+  points   Int     @default(0)
+
+  challenges_as_challenger Challenge[] @relation("challenger")
+  challenges_as_challenged Challenge[] @relation("challenged")
+  games                    Game[]
+  history                  History[]
+}
+
+model Challenge {
+  id                 String   @id @default(uuid())
+  challenger_user_id String
+  challenged_user_id String
+  game_id            String?
+  is_finished        Boolean  @default(false)
+  winner_user_id     String?
+  created_at         DateTime @default(now())
+
+  challenger_user User  @relation("challenger", fields: [challenger_user_id], references: [id])
+  challenged_user User  @relation("challenged", fields: [challenged_user_id], references: [id])
+  game            Game? @relation(fields: [game_id], references: [id])
+}
+
+model Game {
+  id                  String   @id @default(uuid())
+  game_1_character_id String
+  game_2_character_id String
+  game_3_spell_id     String
+  attempts            Int      @default(0)
+  challenge_1_done    Boolean  @default(false)
+  challenge_2_done    Boolean  @default(false)
+  challenge_2_penalty Int      @default(0)
+  userId              String?
+  created_date        DateTime @default(now())
+
+  challenges Challenge[]
+  user       User?       @relation(fields: [userId], references: [id])
+}
+
+model History {
+  id          String   @id @default(uuid())
+  user_id     String
+  description String
+  points      Int
+  created_at  DateTime @default(now())
+
+  user User @relation(fields: [user_id], references: [id])
+}
