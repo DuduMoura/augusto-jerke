@@ -57,10 +57,11 @@ export function GameProvider({ children }: { children: ReactNode }) {
   }
 
   function startGame(data: { gameId: string; characterId1: string; characterId2: string; spellId3: string }) {
-    setState({
+    setState((prev) => ({
       ...defaultState,
       ...data,
-    });
+      pendingChallengeId: prev.pendingChallengeId,
+    }));
   }
 
   return (

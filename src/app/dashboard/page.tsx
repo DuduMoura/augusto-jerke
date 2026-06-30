@@ -83,10 +83,10 @@ export default function DashboardPage() {
             </CardHeader>
             <CardContent className="flex gap-2">
               <EditProfileDialog currentUsername={user.username} />
-              <Button render={<Link href="/game/characterAttributes" />}>
+              <Button render={<Link href="/game/characterAttributes" />} nativeButton={false}>
                 🎮 Jogar
               </Button>
-              <Button variant="outline" render={<Link href="/ranking" />}>
+              <Button variant="outline" render={<Link href="/ranking" />} nativeButton={false}>
                 🏆 Ranking
               </Button>
             </CardContent>
