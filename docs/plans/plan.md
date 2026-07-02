@@ -43,80 +43,85 @@ Construção completa do Potterdle (quiz estilo Wordle temático de Harry Potter
 
 ---
 
-## Etapas Pendentes 🔲
-
-### Fase 4 — Core do Jogo
+### Fase 4 — Core do Jogo ✅
 
 #### API Routes
-- [ ] `POST /api/game` — criar sessão (sortear personagens e feitiço aleatórios, salvar no DB)
-- [ ] `GET /api/game` — buscar jogo ativo do usuário
-- [ ] `DELETE /api/game/[id]` — deletar jogo
+- [x] `POST /api/game` — criar sessão (sortear personagens e feitiço aleatórios, salvar no DB)
+- [x] `GET /api/game` — buscar jogo ativo do usuário
+- [x] `DELETE /api/game/[id]` — deletar jogo
 
-- [ ] `GET /api/game/challenge/1` — retornar config do desafio 1
-- [ ] `POST /api/game/challenge/1/guess` — submeter palpite de personagem (comparar atributos, retornar feedback, `409` em re-palpite)
-- [ ] `GET /api/game/challenge/2` — retornar imageUrl e attemptsUsed
-- [ ] `POST /api/game/challenge/2/guess` — submeter palpite (max 8 tentativas, PARTIAL_LOSS, `409` em re-palpite)
-- [ ] `GET /api/game/challenge/3` — retornar descrição do feitiço + 4 opções
-- [ ] `POST /api/game/challenge/3/guess` — submeter palpite de feitiço (sem limite de tentativas)
+- [x] `GET /api/game/challenge/1` — retornar config do desafio 1
+- [x] `POST /api/game/challenge/1/guess` — submeter palpite de personagem (comparar atributos, retornar feedback, `409` em re-palpite)
+- [x] `GET /api/game/challenge/2` — retornar imageUrl e attemptsUsed
+- [x] `POST /api/game/challenge/2/guess` — submeter palpite (max 8 tentativas, PARTIAL_LOSS, `409` em re-palpite)
+- [x] `GET /api/game/challenge/3` — retornar descrição do feitiço + 4 opções
+- [x] `POST /api/game/challenge/3/guess` — submeter palpite de feitiço (sem limite de tentativas)
 
 #### GameContext e Hooks
-- [ ] `src/hooks/useLocalStorage.ts` — hook genérico de persistência em localStorage
-- [ ] `src/contexts/GameContext.tsx` — estado global do jogo com persistência localStorage
+- [x] `src/hooks/useLocalStorage.ts` — hook genérico de persistência em localStorage
+- [x] `src/contexts/GameContext.tsx` — estado global do jogo com persistência localStorage
 
 #### Páginas
-- [ ] `src/app/game/layout.tsx` — layout com GameContext, bloqueio sequencial de desafios
-- [ ] `src/app/game/characterAttributes/page.tsx` — Desafio 1: autocomplete, tabela de feedback colorida, animações Framer Motion, modal de vitória
-- [ ] `src/app/game/characterImage/page.tsx` — Desafio 2: imagem com blur progressivo (8 níveis), contador de tentativas, modal de derrota parcial
-- [ ] `src/app/game/spells/page.tsx` — Desafio 3: múltipla escolha, modal de conclusão de sessão
+- [x] `src/app/game/layout.tsx` — layout com GameContext, bloqueio sequencial de desafios
+- [x] `src/app/game/characterAttributes/page.tsx` — Desafio 1: autocomplete, tabela de feedback colorida, animações Framer Motion, modal de vitória
+- [x] `src/app/game/characterImage/page.tsx` — Desafio 2: imagem com blur progressivo (8 níveis), contador de tentativas, modal de derrota parcial
+- [x] `src/app/game/spells/page.tsx` — Desafio 3: múltipla escolha, modal de conclusão de sessão
 
 ---
 
-### Fase 5 — Desafios entre Jogadores
+### Fase 5 — Desafios entre Jogadores ✅
 
 #### API Routes
-- [ ] `POST /api/challenge` — criar desafio
-- [ ] `GET /api/challenge` — listar desafios (recebidos/enviados/concluídos)
-- [ ] `PUT /api/challenge/decline` — recusar desafio (challenger +5, challenged -3, min 0, History para ambos)
-- [ ] `PUT /api/challenge/finish` — concluir desafio (winner: +20 ou +10, loser: -10, min 0, History para ambos)
-- [ ] `PUT /api/challenge/surrender` — desistir (challenger +20, desistente -10, History para ambos)
+- [x] `POST /api/challenge` — criar desafio
+- [x] `GET /api/challenge` — listar desafios (recebidos/enviados/concluídos)
+- [x] `PUT /api/challenge/decline` — recusar desafio (challenger +5, challenged -3, min 0, History para ambos)
+- [x] `PUT /api/challenge/finish` — concluir desafio (winner: +20 ou +10, loser: -10, min 0, History para ambos)
+- [x] `PUT /api/challenge/surrender` — desistir (challenger +20, desistente -10, History para ambos)
 
 #### Componentes UI
-- [ ] `src/components/challenge/ChallengeTabs.tsx` — abas: Recebidos / Enviados / Concluídos
+- [x] `src/components/challenge/ChallengeTabs.tsx` — abas: Recebidos / Enviados / Concluídos
 - [ ] `src/components/challenge/ReceivedChallengeList.tsx` — botões Aceitar/Recusar
 - [ ] `src/components/challenge/CompletedChallengesList.tsx` — resultados e pontos
-- [ ] `src/components/challenge/SelectUsers.tsx` — seletor de usuário para enviar desafio
+- [x] `src/components/challenge/SelectUsers.tsx` — seletor de usuário para enviar desafio
 
 ---
 
-### Fase 6 — Ranking e Histórico
+### Fase 6 — Ranking e Histórico ✅
 
 #### API Routes
-- [ ] `GET /api/user/ranking` — todos os usuários ordenados por points DESC
-- [ ] `GET /api/history` — histórico de pontos do usuário autenticado (DESC por data)
+- [x] `GET /api/user/ranking` — todos os usuários ordenados por points DESC
+- [x] `GET /api/history` — histórico de pontos do usuário autenticado (DESC por data)
 
 #### Páginas e Componentes
-- [ ] `src/app/ranking/page.tsx` — tabela de ranking com destaque na posição própria
-- [ ] `src/components/HistoryList.tsx` — lista de movimentações de pontos
+- [x] `src/app/ranking/page.tsx` — tabela de ranking com destaque na posição própria
+- [x] `src/components/HistoryList.tsx` — lista de movimentações de pontos
 
 ---
 
 ### Fase 7 — Dashboard
 
 #### API Routes
-- [ ] `GET /api/user/me` — dados do usuário autenticado (sem password)
-- [ ] `GET /api/user` — todos os usuários exceto o autenticado (para seletor de desafio)
-- [ ] `PUT /api/user` — editar username
+- [x] `GET /api/user/me` — dados do usuário autenticado (sem password)
+- [x] `GET /api/user` — todos os usuários exceto o autenticado (para seletor de desafio)
+- [x] `PUT /api/user` — editar username
 
 #### Página e Componentes
-- [ ] `src/app/dashboard/page.tsx` — página principal com todos os componentes
+- [x] `src/app/dashboard/page.tsx` — página principal com todos os componentes
 - [ ] `src/components/UserProfile.tsx` — exibe username, casa e pontos atuais
-- [ ] `src/components/EditProfileDialog.tsx` — dialog Radix para editar username
-- [ ] `src/components/FunFacts.tsx` — curiosidade aleatória do universo HP
-- [ ] `src/components/AutoLogout.tsx` — detecção de inatividade → signOut()
-- [ ] `src/components/ModeToggle.tsx` — alternância dark/light via next-themes
-- [ ] `src/components/HistoryList.tsx` — histórico de pontos
+- [x] `src/components/EditProfileDialog.tsx` — dialog Radix para editar username
+- [x] `src/components/FunFacts.tsx` — curiosidade aleatória do universo HP
+- [x] `src/components/AutoLogout.tsx` — detecção de inatividade → signOut()
+- [x] `src/components/ModeToggle.tsx` — alternância dark/light via next-themes
+- [x] `src/components/HistoryList.tsx` — histórico de pontos
 
 ---
+
+## Etapas Pendentes 🔲
+
+### Componentes Faltando
+- [ ] `src/components/challenge/ReceivedChallengeList.tsx` — botões Aceitar/Recusar
+- [ ] `src/components/challenge/CompletedChallengesList.tsx` — resultados e pontos
+- [ ] `src/components/UserProfile.tsx` — exibe username, casa e pontos atuais
 
 ### Configurações Finais
 - [ ] Adicionar fonte `harry.ttf` em `src/app/fonts/` e aplicar ao título Potterdle

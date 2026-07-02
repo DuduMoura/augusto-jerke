@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 import { prisma } from "./prisma";
 
 export const authOptions: NextAuthOptions = {
+  trustHost: true,
   providers: [
     CredentialsProvider({
       name: "credentials",
@@ -14,30 +15,34 @@ export const authOptions: NextAuthOptions = {
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) return null;
 
-        const user = await prisma.user.findUnique({
-          where: { email: credentials.email.toLowerCase() },
-          select: {
-            id: true,
-            username: true,
-            email: true,
-            house: true,
-            points: true,
-            password: true,
-          },
-        });
+        try {
+          const user = await prisma.user.findUnique({
+            where: { email: credentials.email.toLowerCase() },
+            select: {
+              id: true,
+              username: true,
+              email: true,
+              house: true,
+              points: true,
+              password: true,
+            },
+          });
 
-        if (!user) return null;
+          if (!user) return null;
 
-        const passwordMatch = await bcrypt.compare(credentials.password, user.password);
-        if (!passwordMatch) return null;
+          const passwordMatch = await bcrypt.compare(credentials.password, user.password);
+          if (!passwordMatch) return null;
 
-        return {
-          id: user.id,
-          username: user.username,
-          email: user.email,
-          house: user.house,
-          points: user.points,
-        };
+          return {
+            id: user.id,
+            username: user.username,
+            email: user.email,
+            house: user.house,
+            points: user.points,
+          };
+        } catch {
+          return null;
+        }
       },
     }),
   ],

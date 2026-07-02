@@ -44,7 +44,19 @@ export function ChallengeTabs({ currentUserId }: { currentUserId: string }) {
   const { data, isLoading } = useQuery({ queryKey: ["challenges"], queryFn: fetchChallenges });
 
   function handleAccept(challengeId: string) {
-    setState((prev) => ({ ...prev, pendingChallengeId: challengeId, isFinished: false }));
+    setState((prev) => ({
+      ...prev,
+      gameId: "",
+      currentChallenge: 1,
+      isFinished: false,
+      attemptsChallenge1: 0,
+      attemptsChallenge2: 0,
+      attemptsChallenge3: 0,
+      guessedCharacters1: [],
+      guessedCharacters2: [],
+      challenge2Penalty: 0,
+      pendingChallengeId: challengeId,
+    }));
     router.push("/game/characterAttributes");
   }
 
